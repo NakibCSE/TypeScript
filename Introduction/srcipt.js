@@ -23,4 +23,4 @@ fun2(); // But let say for example by mistakenly we call fun2(), but JS is not c
 
 //From the above issues of course it is not readable and maintainable.
 //It is not object oriented
-//From the above example we can see that it is not compiling the code, it's directly executing.
+//From the above example we can see that it is not compiling the code, it's directly executing. 
