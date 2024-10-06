@@ -1,1 +1,1 @@
-console.log("Assalamualikum from TS file....");
+console.log("Assalamualikum from TS file...");
