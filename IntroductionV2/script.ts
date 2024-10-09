@@ -1,16 +1,11 @@
 console.log("Assalamualikum from TS.");
 
+let a = 10;
+let b = 20;
 
-function onAdd(n1: number, n2:number)
-{
-    let a = 100;
-    console.log(a);
-    if(a>100)
-    {
-        return "Good Result";
-    }
-    else
-    {
-        return "Not Good";
-    }
+let c = a + b;
+
+for (let i = 0; i < 5; i++) {
+  console.log(i);
 }
+console.log(c);

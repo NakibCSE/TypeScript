@@ -1,12 +1,10 @@
 "use strict";
 console.log("Assalamualikum from TS.");
-function onAdd(n1, n2) {
-    let a = 100;
-    console.log(a);
-    if (a > 100) {
-        return "Good Result";
-    }
-    else {
-        return "Not Good";
-    }
+let a = 10;
+let b = 20;
+let c = a + b;
+for (let i = 0; i < 5; i++) {
+    console.log(i);
 }
+console.log(c);
+//# sourceMappingURL=script.js.map
