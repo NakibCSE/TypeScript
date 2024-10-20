@@ -11,3 +11,9 @@ function display(pair) {
     pair.push("Khan Shaheb"); // We can also push new elements to the tuple
 }
 display(["Nakib Khan", 1]);
+//Tuple destructing
+function display2([empName, empID]) {
+    console.log("Employee Name : " + empName);
+    console.log("Employee ID : " + empID);
+}
+display2(["Khan Shaheb", 20476581]);
