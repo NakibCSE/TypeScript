@@ -32,3 +32,22 @@ function displayLogRest(...logs) {
     });
 }
 displayLogRest("Log 1", "Log 2", "Log 3");
+//Arrow functins example
+let add1 = (n1, n2) => {
+    return n1 + n2;
+};
+//If we don't need to return anything from the function, it can written as below
+let add5 = () => {
+    console.log("Assalammualikum From the simplest arrow function...");
+};
+add5();
+//Function as a parameter
+function takeAction(n1, n2, fun) {
+    fun(n1, n2);
+}
+takeAction(1, 2, (n1, n2) => {
+    console.log(n1 + n2);
+});
+takeAction(3, 5, (n1, n2) => {
+    console.log(n1 * n2);
+});
