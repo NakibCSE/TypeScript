@@ -51,3 +51,9 @@ takeAction(1, 2, (n1, n2) => {
 takeAction(3, 5, (n1, n2) => {
     console.log(n1 * n2);
 });
+
+//Annonymous functino constructor
+
+let multi = new Function("n1", "n2", "return n1*n2")
+console.log(multi(10,10));
+
