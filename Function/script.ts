@@ -72,3 +72,24 @@ takeAction(3,5, (n1:number, n2:number) =>
   console.log(n1 * n2);
   
 });
+
+//Annonymous functino constructor
+
+let multi = new Function("n1", "n2", "return n1*n2")
+console.log(multi(10,10));
+
+//Casting
+function displayLength(input : String | Number)
+{
+    if(typeof input === "string")
+    {
+        console.log((input as String).length);   
+    }
+    else
+    {
+        console.log("Sorry length calculation is possible for string only...");
+        
+    }
+}
+displayLength("Nakib Khan");
+displayLength(400);

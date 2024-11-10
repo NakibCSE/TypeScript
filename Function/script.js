@@ -51,9 +51,17 @@ takeAction(1, 2, (n1, n2) => {
 takeAction(3, 5, (n1, n2) => {
     console.log(n1 * n2);
 });
-
 //Annonymous functino constructor
-
-let multi = new Function("n1", "n2", "return n1*n2")
-console.log(multi(10,10));
-
+let multi = new Function("n1", "n2", "return n1*n2");
+console.log(multi(10, 10));
+//Casting
+function displayLength(input) {
+    if (typeof input === "string") {
+        console.log(input.length);
+    }
+    else {
+        console.log("Sorry length calculation is possible for string only...");
+    }
+}
+displayLength("Nakib Khan");
+displayLength(400);
