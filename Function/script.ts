@@ -93,3 +93,7 @@ function displayLength(input : String | Number)
 }
 displayLength("Nakib Khan");
 displayLength(400);
+
+//Casting with HTML
+let input = document.getElementById("input") as HTMLInputElement;
+console.log(input.value);

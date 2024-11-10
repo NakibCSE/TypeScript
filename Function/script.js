@@ -65,3 +65,6 @@ function displayLength(input) {
 }
 displayLength("Nakib Khan");
 displayLength(400);
+//Casting with HTML
+let input = document.getElementById("input");
+console.log(input.value);
