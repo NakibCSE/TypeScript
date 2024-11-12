@@ -39,6 +39,9 @@ class BankAccount {
     showBalance() {
         console.log("Balance : " + this.accountBalance);
     }
+    static getCount() {
+        return BankAccount.count;
+    }
 }
 BankAccount.count = 0;
 let account1 = new BankAccount(101, "Nakib", 1000);
@@ -65,6 +68,4 @@ account1.debit(50);
 account1.showBalance();
 account1.debit(50);
 account1.showBalance();
-console.log(BankAccount.count);
-let account4 = new BankAccount(2, "Hafsa Begum", 3000000);
-console.log(BankAccount.count);
+console.log("Number of account created is = " + BankAccount.getCount());

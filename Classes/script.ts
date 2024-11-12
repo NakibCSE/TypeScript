@@ -5,7 +5,7 @@ class BankAccount {
   private accountBalance: number;
   private debitCharges : number = 5;
   private numberOfDebit : number = 0;
-  public static count : number = 0;
+  private static count : number = 0;
   constructor(
     accountNumber: number,
     accountName: string,
@@ -57,6 +57,10 @@ class BankAccount {
     console.log("Balance : " + this.accountBalance);
     
   }
+  public static getCount()
+  {
+    return BankAccount.count;
+  }
 }
 
 
@@ -89,7 +93,6 @@ account1.showBalance();
 account1.debit(50);
 account1.showBalance();
 
-console.log(BankAccount.count);
-let account4 = new BankAccount(2, "Hafsa Begum", 3000000);
-console.log(BankAccount.count);
 
+
+console.log("Number of account created is = "+BankAccount.getCount());
