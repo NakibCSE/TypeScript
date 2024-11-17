@@ -2,7 +2,7 @@
 class BankAccount {
   accountName: string;
   accountNumber: number;
-  accountBalance: number;
+  protected accountBalance: number;
 
   constructor(
     accountName: string,
