@@ -1,8 +1,9 @@
 //Parent class
-class BankAccount {
+abstract class BankAccount {
   accountName: string;
   accountNumber: number;
   protected accountBalance: number;
+  abstract branch : string;
 
   constructor(
     accountName: string,
@@ -28,37 +29,48 @@ class BankAccount {
   showBalance() {
     console.log(this.accountBalance);
   }
+   //Abstract method implmentation
+  abstract netBanking() : void;
 }
 
 //Child class 1
 class StudentBankAccount extends BankAccount {
   collageName: string;
+  branch: string; 
   constructor(
     accountName: string,
     accountNumber: number,
     accountBalance: number,
-    collageName: string
+    collageName: string,
+    branch : string
   ) {
     super(accountName, accountNumber, accountBalance);
     this.collageName = collageName;
+    this.branch = branch;
   }
   studentLoan() {
     console.log("Student loan called.");
+  }
+  netBanking(): void {
+    console.log("netBanking for student users..");
+    
   }
 }
 
 //Child class 2
 class BusinessBankAccount extends BankAccount {
   businessName: string;
-
+  branch: string;
   constructor(
     businessName: string,
     accountName: string,
     accountNumber: number,
-    accountBalance: number
+    accountBalance: number,
+    branch : string
   ) {
     super(accountName, accountNumber, accountBalance);
     this.businessName = businessName;
+    this.branch = branch;
   }
 
   //Overriding
@@ -74,16 +86,21 @@ class BusinessBankAccount extends BankAccount {
   businessLoan() {
     console.log("Business loan called.");
   }
+  //Abstract method implmentation
+  netBanking(): void {
+    console.log("netBanking for business users.. ");
+    
+  }
 }
 
-let studentAcc1 = new StudentBankAccount("Nakib", 101, 1000, "ABC");
+let studentAcc1 = new StudentBankAccount("Nakib", 101, 1000, "ABC","Chittagong");
 studentAcc1.credit();
 //studentAcc1.debit();
 studentAcc1.studentLoan();
 
-let studentAcc2 = new StudentBankAccount("Rakib", 101, 1000, "ABCD");
+let studentAcc2 = new StudentBankAccount("Rakib", 101, 1000, "ABCD", "Dhaka");
 
-let businessAcc1 = new BusinessBankAccount("Khan", "PQR", 1001, 5000);
+let businessAcc1 = new BusinessBankAccount("Khan", "PQR", 1001, 5000,"New Delhi");
 businessAcc1.showBalance();
 businessAcc1.debit(10);
 businessAcc1.showBalance();
@@ -92,3 +109,7 @@ businessAcc1.showBalance();
 businessAcc1.debit(10);
 businessAcc1.showBalance();
 
+
+//Test abstract method
+studentAcc1.netBanking();
+businessAcc1.netBanking();

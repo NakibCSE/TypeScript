@@ -25,19 +25,24 @@ class BankAccount {
 }
 //Child class 1
 class StudentBankAccount extends BankAccount {
-    constructor(accountName, accountNumber, accountBalance, collageName) {
+    constructor(accountName, accountNumber, accountBalance, collageName, branch) {
         super(accountName, accountNumber, accountBalance);
         this.collageName = collageName;
+        this.branch = branch;
     }
     studentLoan() {
         console.log("Student loan called.");
     }
+    netBanking() {
+        console.log("netBanking for student users..");
+    }
 }
 //Child class 2
 class BusinessBankAccount extends BankAccount {
-    constructor(businessName, accountName, accountNumber, accountBalance) {
+    constructor(businessName, accountName, accountNumber, accountBalance, branch) {
         super(accountName, accountNumber, accountBalance);
         this.businessName = businessName;
+        this.branch = branch;
     }
     //Overriding
     debit(amount) {
@@ -53,13 +58,17 @@ class BusinessBankAccount extends BankAccount {
     businessLoan() {
         console.log("Business loan called.");
     }
+    //Abstract method implmentation
+    netBanking() {
+        console.log("netBanking for business users.. ");
+    }
 }
-let studentAcc1 = new StudentBankAccount("Nakib", 101, 1000, "ABC");
+let studentAcc1 = new StudentBankAccount("Nakib", 101, 1000, "ABC", "Chittagong");
 studentAcc1.credit();
 //studentAcc1.debit();
 studentAcc1.studentLoan();
-let studentAcc2 = new StudentBankAccount("Rakib", 101, 1000, "ABCD");
-let businessAcc1 = new BusinessBankAccount("Khan", "PQR", 1001, 5000);
+let studentAcc2 = new StudentBankAccount("Rakib", 101, 1000, "ABCD", "Dhaka");
+let businessAcc1 = new BusinessBankAccount("Khan", "PQR", 1001, 5000, "New Delhi");
 businessAcc1.showBalance();
 businessAcc1.debit(10);
 businessAcc1.showBalance();
@@ -67,3 +76,6 @@ businessAcc1.debit(5900);
 businessAcc1.showBalance();
 businessAcc1.debit(10);
 businessAcc1.showBalance();
+//Test abstract method
+studentAcc1.netBanking();
+businessAcc1.netBanking();
