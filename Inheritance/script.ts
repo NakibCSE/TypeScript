@@ -113,3 +113,20 @@ businessAcc1.showBalance();
 //Test abstract method
 studentAcc1.netBanking();
 businessAcc1.netBanking();
+
+//Getter and setter
+
+class Person{
+  private _name : string = "N\A";
+  
+  public get name() : string {
+    return this._name;
+  }
+  
+  public set name(v : string) {
+    this._name = v;
+  }
+}
+let p1 = new Person();
+p1.name = "Nakib Khan";
+console.log(p1.name);
