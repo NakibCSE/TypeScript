@@ -118,7 +118,9 @@ businessAcc1.netBanking();
 
 class Person{
   private _name : string = "N\A";
-  
+  constructor (){
+    
+  }
   public get name() : string {
     return this._name;
   }
