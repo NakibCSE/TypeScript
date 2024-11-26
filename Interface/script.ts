@@ -8,7 +8,11 @@ interface BankAccount {
   credit:(amount: number) => void;
 }
 
-class StudentBankAccount implements BankAccount {
+interface BankAccountV2 extends BankAccount{
+  netBanking: () => void;
+}
+
+class StudentBankAccount implements BankAccountV2 {
   accountNumber: number;
   accountName: string;
   accountBalance: number;
@@ -30,6 +34,11 @@ class StudentBankAccount implements BankAccount {
   credit(amount: number) : void
   {
     console.log("Debit is happening in Student Bank Account."); 
+  }
+  netBanking(): void
+  {
+    console.log("Student netBanking...");
+    
   }
 }
 
