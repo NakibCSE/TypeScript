@@ -27,3 +27,33 @@ function displayString(value1: string, value2: string): void {
 class emp {
     name: string;
 }
+
+//NoUnusedLocals
+function displayAny(){
+  let s;
+}
+
+//NoFallThroughCaseinswitch
+let i = 1;
+switch(i){
+  case 1:
+    console.log("One");
+    break;
+  case 2:
+    console.log("Two");
+  case 3:
+    console.log("Three");
+    break;
+}
+
+//AllowUnreachableCode
+
+function isGreaterThenFive(n: number): boolean{
+  if(n<5){
+    return false;
+  }
+  else{
+    return true;
+  }
+  return true;
+}
