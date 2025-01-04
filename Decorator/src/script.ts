@@ -52,11 +52,11 @@ function Component(htmlCode: string, selector: string) {
   return function (constructor: any) {
     document.addEventListener("DOMContentLoaded", () => {
       let htmlEle = document.getElementById(selector);
-      let data = new constructor();   //Creating a new instanc of the class order
-      
+      let data = new constructor(); //Creating a new instanc of the class order
+
       htmlCode = htmlCode.replace("{{numberOfOrder}}", data.numberOfOrder);
       htmlCode = htmlCode.replace("{{nextOrder}}", data.nextOrder);
-      
+
       htmlEle!.innerHTML = htmlCode;
     });
   };
@@ -66,9 +66,40 @@ function Component(htmlCode: string, selector: string) {
   `
   <h1>Orders = {{numberOfOrder}} <h1>
   <p>Next order = {{nextOrder}}</p>
-  `
-  , "orderDiv")
+  `,
+  "orderDiv"
+)
 class Order {
   numberOfOrder: number = 684;
   nextOrder: number = 685;
 }
+
+//Property Decorator
+function Trim()
+{
+  return function(target : any, key: string){
+    let value = target[key];
+
+    let getter = () => {
+      return value;
+    }
+
+    let setter = (nextValue : string) =>{
+      value = nextValue.trim();
+    }
+
+    Object.defineProperty(target, key, {
+      get: getter,
+      set: setter,
+      enumerable: true,
+      configurable: true,
+    });
+  };
+}
+class BankAccountPr{
+  @Trim()
+  accountName: string = "       Nakib         ";
+}
+
+let accPr = new BankAccountPr();
+console.log(accPr.accountName + " : Length "+accPr.accountName.length);

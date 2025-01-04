@@ -61,3 +61,30 @@ Order = __decorate([
   <p>Next order = {{nextOrder}}</p>
   `, "orderDiv")
 ], Order);
+function Trim() {
+    return function (target, key) {
+        let value = target[key];
+        let getter = () => {
+            return value;
+        };
+        let setter = (nextValue) => {
+            value = nextValue.trim();
+        };
+        Object.defineProperty(target, key, {
+            get: getter,
+            set: setter,
+            enumerable: true,
+            configurable: true,
+        });
+    };
+}
+class BankAccountPr {
+    constructor() {
+        this.accountName = "       Nakib         ";
+    }
+}
+__decorate([
+    Trim()
+], BankAccountPr.prototype, "accountName", void 0);
+let accPr = new BankAccountPr();
+console.log(accPr.accountName + " : Length " + accPr.accountName.length);
