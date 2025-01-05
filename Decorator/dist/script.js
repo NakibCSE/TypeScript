@@ -88,3 +88,37 @@ __decorate([
 ], BankAccountPr.prototype, "accountName", void 0);
 let accPr = new BankAccountPr();
 console.log(accPr.accountName + " : Length " + accPr.accountName.length);
+function UserConfirmation() {
+    return function (target, key, descriptor) {
+        let originalFun = descriptor.value;
+        descriptor.value = function (...args) {
+            let isOk = confirm("Are you sure?");
+            if (isOk) {
+                let result = originalFun.apply(target, args);
+                return result;
+            }
+            else {
+                return null;
+            }
+        };
+    };
+}
+class BankAccountMd {
+    constructor() {
+        this.accountName = "  Nakib  ";
+    }
+    debit() {
+        console.log("Debit Successful.");
+    }
+    credit() {
+        console.log("Credit Successful.");
+    }
+}
+__decorate([
+    UserConfirmation()
+], BankAccountMd.prototype, "debit", null);
+__decorate([
+    UserConfirmation()
+], BankAccountMd.prototype, "credit", null);
+let accMd = new BankAccountMd();
+accMd.credit();

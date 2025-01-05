@@ -75,18 +75,17 @@ class Order {
 }
 
 //Property Decorator
-function Trim()
-{
-  return function(target : any, key: string){
+function Trim() {
+  return function (target: any, key: string) {
     let value = target[key];
 
     let getter = () => {
       return value;
-    }
+    };
 
-    let setter = (nextValue : string) =>{
+    let setter = (nextValue: string) => {
       value = nextValue.trim();
-    }
+    };
 
     Object.defineProperty(target, key, {
       get: getter,
@@ -96,10 +95,42 @@ function Trim()
     });
   };
 }
-class BankAccountPr{
+class BankAccountPr {
   @Trim()
   accountName: string = "       Nakib         ";
 }
 
 let accPr = new BankAccountPr();
-console.log(accPr.accountName + " : Length "+accPr.accountName.length);
+console.log(accPr.accountName + " : Length " + accPr.accountName.length);
+
+//Method Decorator
+function UserConfirmation() {
+  return function (target: any, key: string, descriptor: PropertyDescriptor) {
+    let originalFun = descriptor.value;
+
+    descriptor.value = function (...args: any[]) {
+      let isOk = confirm("Are you sure?");
+      if (isOk) {
+        let result = originalFun.apply(target, args);
+        return result;
+      } else {
+        return null;
+      }
+    };
+  };
+}
+class BankAccountMd {
+  accountName: string = "  Nakib  ";
+  @UserConfirmation()
+  debit() {
+    console.log("Debit Successful.");
+  }
+
+  @UserConfirmation()
+  credit() {
+    console.log("Credit Successful.");
+  }
+}
+
+let accMd = new BankAccountMd();
+accMd.credit();
