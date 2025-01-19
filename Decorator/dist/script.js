@@ -88,11 +88,11 @@ __decorate([
 ], BankAccountPr.prototype, "accountName", void 0);
 let accPr = new BankAccountPr();
 console.log(accPr.accountName + " : Length " + accPr.accountName.length);
-function UserConfirmation() {
+function UserConfirmation(message) {
     return function (target, key, descriptor) {
         let originalFun = descriptor.value;
         descriptor.value = function (...args) {
-            let isOk = confirm("Are you sure?");
+            let isOk = confirm(message);
             if (isOk) {
                 let result = originalFun.apply(target, args);
                 return result;
@@ -115,10 +115,11 @@ class BankAccountMd {
     }
 }
 __decorate([
-    UserConfirmation()
+    UserConfirmation("Are you sure to debit from your account?")
 ], BankAccountMd.prototype, "debit", null);
 __decorate([
-    UserConfirmation()
+    UserConfirmation("Are you sure to credit to your account?")
 ], BankAccountMd.prototype, "credit", null);
 let accMd = new BankAccountMd();
 accMd.credit();
+accMd.debit();

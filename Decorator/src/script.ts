@@ -104,12 +104,12 @@ let accPr = new BankAccountPr();
 console.log(accPr.accountName + " : Length " + accPr.accountName.length);
 
 //Method Decorator
-function UserConfirmation() {
+function UserConfirmation(message : string) {
   return function (target: any, key: string, descriptor: PropertyDescriptor) {
     let originalFun = descriptor.value;
 
     descriptor.value = function (...args: any[]) {
-      let isOk = confirm("Are you sure?");
+      let isOk = confirm(message);
       if (isOk) {
         let result = originalFun.apply(target, args);
         return result;
@@ -121,12 +121,12 @@ function UserConfirmation() {
 }
 class BankAccountMd {
   accountName: string = "  Nakib  ";
-  @UserConfirmation()
+  @UserConfirmation("Are you sure to debit from your account?")
   debit() {
     console.log("Debit Successful.");
   }
 
-  @UserConfirmation()
+  @UserConfirmation("Are you sure to credit to your account?")
   credit() {
     console.log("Credit Successful.");
   }
@@ -134,3 +134,4 @@ class BankAccountMd {
 
 let accMd = new BankAccountMd();
 accMd.credit();
+accMd.debit();
