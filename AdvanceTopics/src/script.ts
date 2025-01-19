@@ -40,3 +40,21 @@ enum ErrorCode{
 console.log(ErrorCode.ARRAY);
 console.log(ErrorCode.CLASS);
 
+//Any vs Unknow
+let val1: any;
+val1 = 100;
+console.log(val1);
+
+let result = val1 + 100;
+
+let val2: unknown;
+val2 = "Nakib Khan";
+
+if(typeof val2 == "number"){
+    let result = val2 + 1;
+}
+else if(typeof val2 == "string")
+{
+    let result = val2.toUpperCase();
+    console.log(result);
+}
